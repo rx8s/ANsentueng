@@ -54,7 +54,7 @@ index.html : โค้ดหลักของโปรแกรมทั้ง�
 (ไม่มี backend / server-side code)
 
 🚀 Demo
-👉 https://your-username.github.io/badminton-score-counter/
+👉 https://rx8s.github.io/ANsentueng/nubkanan/
 
 ⚡ License
 MIT License
