@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="คิดค่าตีแบดกันเถอะ">
+	<title>คิดค่าตีแบดกันเถอะ</title>
+	<link rel="icon" href="badminton.png">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+	<style type="text/css">
+		html,body {
+			font-family: "Prompt", serif !important;
+		}
+		body{
+			padding: 0 !important;
+			margin: 0 !important;
+		}
+	</style>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-FDWYWZENM1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-FDWYWZENM1');
+	</script>
+</head>
+<body>
+	<div class="container-fluid" style="min-height: 100vh;">
+		<div class="row mt-2">
+			<div class="col-12 text-center">
+				<a href="index.html" style="font-size:12px;">คิดแบบง่ายๆ</a>
+				<hr>
+			</div>
+		</div>
+		<div class="row mt-2">
+			<div class="col-12 mb-2">
+				<div class="input-group">
+					<span class="input-group-text" id="basic-addon1">
+						<i class="fa-solid fa-tags"></i>&nbsp;ค่าคอร์ท ชั่วโมง ละ ?
+					</span>
+					<input type="text" class="form-control float-end text-end" id="price_court_per_hour" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" />
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="input-group">
+					<span class="input-group-text" id="basic-addon1">คิดกี่ชั่วโมง</span>
+					<input type="text" class="form-control float-end text-end" id="nh" aria-label="คิดกี่ชั่วโมง" aria-describedby="basic-addon1" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" />
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div id="loopx">
+			
+		</div>
+		<div id="sum"></div>
+		<div id="calsum" class="mb-3 text-center" style="font-size:9px;">สูตร = ( ( ค่าคอร์ท x จำนวนคอร์ท) + (ค่าลูก x จำนวนลูก) ) / จำนวนคน </div>
+		<br>
+	</div>
+
+	<div class="footer">
+		
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#calsum").hide();
+			var card = ['primary','secondary','success','danger','warning','info','dark'];
+			function get_random (list) {
+				return list[Math.floor((Math.random()*list.length))];
+			}
+			var nh = 0;
+			$("#nh").keyup(function() {
+				
+				let text = "";
+				for (let i = 1; i <= this.value; i++) {
+					let bd = get_random(card);
+					text += `
+							<div class="card card-body border-${bd}">
+								<div class="row">
+									<div class="col-6">
+										<div class="row mt-2">
+											<div class="col-12 mb-2">
+												<label><i class="fa-regular fa-clock"></i> ชั่วโมงที่</label>
+												<input type="text" class="form-control" id="total_hour[${i}]" readonly value="${i}" />
+											</div>
+
+											<div class="col-12 mb-2">
+												<label><i class="fa-solid fa-layer-group"></i> กี่คอร์ท</label>
+												<input type="text" class="form-control" id="total_court[${i}]" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" />
+											</div>
+
+											<div class="col-12 mb-2">
+												<label><i class="fa-solid fa-person-running"></i> กี่คนนะ</label>
+												<input type="text" class="form-control" id="total_player[${i}]" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" />
+											</div>
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="row mt-2">
+											<div class="col-12 mb-2">
+												<label><i class="fa-solid fa-feather-pointed"></i> ใช้ลูกแบดไปกี่ลูก</label>
+												<input type="text" class="form-control" id="using_shuttle[${i}]" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" />
+											</div>
+											<div class="col-12 mb-2">
+												<label><i class="fa-solid fa-tag"></i> ลูกแบดลูกละเท่าไหร่</label>
+												<input type="text" class="form-control" id="price_pre_shuttle[${i}]" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" />
+											</div>
+											<div class="col-12 text-center">
+												<label style="display: block; min-width:100%; max-width:100%;">&nbsp;</label>
+												<a href="#" style="display: block; min-width:100%; max-width:100%;" class="btn btn-outline-${bd}" onclick="calcx(${i});">
+													<i class="fa-solid fa-calculator"></i>
+													ชั่วโมงที่ ${i} คนละกี่บาท
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row mt-2">
+									<div class="col text-center">
+										<div id="rs[${i}]"></div>
+									</div>
+								</div>
+							</div>
+							<hr>
+					`;
+				}
+				document.getElementById("loopx").innerHTML = text;
+			});
+
+			
+		});
+
+		function calcx(i){
+
+			$("#calsum").show();
+			const price_court_per_hour = [];
+			const total_court = [];
+			const total_hour = [];
+			const using_shuttle = [];
+			const price_pre_shuttle = [];
+			const total_player = [];
+			const price_per_player = [];
+			const rs = [];
+			const sumh = [];
+			const arena_answer = [];
+			const shuttle_answer = [];
+
+			arena_answer[i] = 0;
+			shuttle_answer[i] = 0;
+
+			price_court_per_hour[i] = document.getElementById(`price_court_per_hour`).value;
+			total_court[i] = document.getElementById(`total_court[${i}]`).value;
+			total_hour[i] = document.getElementById(`total_hour[${i}]`).value;
+
+			using_shuttle[i] = document.getElementById(`using_shuttle[${i}]`).value
+			price_pre_shuttle[i] = document.getElementById(`price_pre_shuttle[${i}]`).value
+			total_player[i] = document.getElementById(`total_player[${i}]`).value
+
+			if(	price_court_per_hour[i] 	!=	""	&&	
+				total_hour[i]				!=	""	&&
+				total_court[i]				!=	""	&&
+				using_shuttle[i]			!=	""	&&
+				price_pre_shuttle[i]		!=	""	&&
+				total_player[i]				!=	""
+				)
+			{
+				arena_answer[i] = (price_court_per_hour[i] * 1) * total_court[i];
+				shuttle_answer[i] = price_pre_shuttle[i] * using_shuttle[i];
+
+				rs[i] = document.getElementById(`rs[${i}]`)
+				rs[i].innerHTML = `
+					<div class="alert alert-success text-center" style="margin-bottom:0"> 
+						คนละ <a href="#" class="alert-link">${((arena_answer[i] + shuttle_answer[i]) / total_player[i]).toFixed(2)}</a> บาท จ้าาาา
+					</div>
+					<div class="text-center">
+						<span style="font-size:9px;">ชั่วโมงที่ ${i} = ( ( ${price_court_per_hour[i]} x ${total_court[i]} ) + ( ${price_pre_shuttle[i]} x ${using_shuttle[i]} ) ) / ${total_player[i]}</span>
+						<br>
+					</div>`;
+				sumh[i]	=	((arena_answer[i] + shuttle_answer[i]) / total_player[i]).toFixed(2);
+
+				sumtotal(i,parseFloat(sumh[i]));
+			}
+			else
+			{
+				rs[i] = document.getElementById(`rs[${i}]`)
+				rs[i].innerHTML = '<div class="alert alert-danger text-center" > กรอกข้อมูลให้ครบก่อนนะ </div><hr>'
+
+			}
+
+		}
+		function sumtotal(i,sumh){
+			// var sum=[];
+			// sum[i] = sumh;
+			// console.log(sum);
+			// // for (let ii = 1; ii <= sum.length; ii++ ) {
+			// // 	sums += sum[ii];
+			// // }
+			// console.log(`คนที่ตี ${i} ชั่วโมง`, sum[i], sumh);
+		}
+	</script>
+</body>
+</html>

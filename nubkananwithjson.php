@@ -100,7 +100,7 @@
 				</button>
 			</div>
 			
-				
+
 
 
 		</div>
@@ -134,10 +134,15 @@
 			checkWinner();
 		}
 
-		function addPoint(team) {
+		async function addPoint(team) {
+			
 			if (gameOver) return;
-			if (team === 1) score1++;
-			else score2++;
+			if (team === 1){
+				const updatescore1 = score1++;
+
+			}else{
+				score2++;
+			}
 			updateUI();
 		}
 
@@ -197,8 +202,8 @@
 				const li = document.createElement("li");
 				li.className = "list-group-item d-flex justify-content-between align-items-center";
 				li.innerHTML = `${item}
-<button class="btn btn-sm btn-outline-danger" onclick="deleteMatch(${index})">
-<i class="fa fa-trash"></i>
+								<button class="btn btn-sm btn-outline-danger" onclick="deleteMatch(${index})">
+								<i class="fa fa-trash"></i>
 			</button>`;
 			list.appendChild(li);
 		});
@@ -258,7 +263,23 @@
 		}
 
 		renderHistory();
-	</script>
+
+	
+	    setInterval(function(){
+
+	    	<?php
+				$json = file_get_contents('kanannow.json');
+				$obj = json_decode($json);
+				echo "
+				document.getElementById('score1').innerText = '".$obj->team_a."';
+				document.getElementById('score2').innerText = '".$obj->team_b."';
+				";
+			?>
+
+	    	// console.log('sss')
+	    }, 2000);
+    
+</script>
 
 </body>
 </html>
