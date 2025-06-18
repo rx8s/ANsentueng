@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ระบบคิดค่าตีแบด (ก๊วน)</title>
+	<title>ระบบของANsentueng</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
@@ -50,6 +50,69 @@
 </head>
 <body>
 	<div class="container-fluid">
+		<div class="row mt-2">
+			<div class="col-1 d-flex justify-content-center align-items-center">
+				<img src="AN5.jpg" class="img-fluid">
+			</div>
+			<div class="col-3" id="cardmathnow">
+				<div class="card text-primary" style="border-color: #FFCCFF;">
+					<h5 class="card-header text-center" style="color:#fff; background-color: #FFCCFF; border-bottom-color: #FFCCFF;">No</h5>
+					<div class="text-center" style="font-size:64px">
+						<span id="mathnow">x</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-8" id="6mathnow">
+				<div class="row">
+					<div class="col-6 pb-1" id="6mathnow1">
+						<div class="card border-info text-info justify-content-center d-flex align-items-center" style="min-height:100%;">
+							<div class="text-center" style="font-size:10px;">
+								<span id="mathnow1"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 pb-1">
+						<div class="card border-info text-info justify-content-center d-flex align-items-center" style="min-height:100%;">
+							<div class="text-center" style="font-size:10px">
+								<span id="mathnow2"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6 pb-1 pt-1" id="6mathnow2">
+						<div class="card border-info text-info justify-content-center d-flex align-items-center" style="min-height:100%;">
+							<div class="text-center" style="font-size:10px">
+								<span id="mathnow3"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 pb-1 pt-1">
+						<div class="card border-info text-info justify-content-center d-flex align-items-center" style="min-height:100%;">
+							<div class="text-center" style="font-size:10px">
+								<span id="mathnow4"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6 pt-1" id="6mathnow3">
+						<div class="card border-info text-info justify-content-center d-flex align-items-center" style="min-height:100%;">
+							<div class="text-center" style="font-size:10px">
+								<span id="mathnow5"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 pt-1">
+						<div class="card border-info text-info justify-content-center d-flex align-items-center" style="min-height:100%;">
+							<div class="text-center" style="font-size:10px">
+								<span id="mathnow6"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col">
 				<div class="row mt-2" id="paneladdnewmember">
@@ -60,7 +123,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="row mt-2">
 					<div class="col-12">
 						<div class="card">
@@ -204,18 +266,18 @@
 
 		var qr_dom = document.getElementById('qrcode');
 
-		var accid = "1749900303921";
+		var accid = "1100800088244";
 		function render_qr(amount){
 
 			let wh;
 
 			if(window.innerWidth > window.innerHeight)
 			{
-				wh = (window.innerHeight - (window.innerHeight*50/100))
+				wh = (window.innerHeight - (window.innerHeight*40/100))
 			}
 			else
 			{
-				wh = (window.innerWidth - (window.innerWidth*30/100))
+				wh = (window.innerWidth - (window.innerWidth*50/100))
 			}
 
 
@@ -235,6 +297,23 @@
 		}
 		//render_qr(id, amount);
 
+
+
+
+		// console.log( $('#cardmathnow').height() , $('#cardmathnow').height()*0.96 );
+		$("#6mathnow").css({
+			"height":($('#cardmathnow').height()),
+		});
+
+		$("#6mathnow1").css({
+			"height":($('#cardmathnow').height()/3),
+		});
+		$("#6mathnow2").css({
+			"height":($('#cardmathnow').height()/3),
+		});
+		$("#6mathnow3").css({
+			"height":($('#cardmathnow').height()/3),
+		});
 	</script>
 
 
@@ -246,14 +325,14 @@
 		import { getDatabase, ref, set, get, query, orderByChild, equalTo, update, onValue, push, child, remove, startAt, endAt  } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-database.js";
 		// ตั้งค่า Firebase
 		const firebaseConfig = {
-			apiKey: "AIzaSyBIe-ncWVaLrsEZpEXj8Zarr3Jeku6rlZk",
-			authDomain: "teebadnaaaaa.firebaseapp.com",
-			databaseURL: "https://teebadnaaaaa-default-rtdb.asia-southeast1.firebasedatabase.app",
-			projectId: "teebadnaaaaa",
-			storageBucket: "teebadnaaaaa.firebasestorage.app",
-			messagingSenderId: "789554357659",
-			appId: "1:789554357659:web:d55f0745f460f213832d3e",
-			measurementId: "G-NY849BJCTM"
+			apiKey: "AIzaSyAYOWpVDOQ7Q-fxjZx0vTS3SDetUbWTMY4",
+			authDomain: "ansentueng.firebaseapp.com",
+			databaseURL: "https://ansentueng-default-rtdb.asia-southeast1.firebasedatabase.app",
+			projectId: "ansentueng",
+			storageBucket: "ansentueng.firebasestorage.app",
+			messagingSenderId: "370408378735",
+			appId: "1:370408378735:web:729d1a9e4c951fd844589a",
+			measurementId: "G-75E8KLKM6Z"
 		};
 
 		// เริ่มต้น Firebase
@@ -319,40 +398,64 @@
 
 			document.getElementById("playerName").value = "";
 
-			$("#paneladdnewmember").hide(200);
-			$("#btnaddnewmrmber").show(200);
+			// $("#paneladdnewmember").hide(200);
+			// $("#btnaddnewmrmber").show(200);
 		}
 
 		// โหลดรายชื่อผู้เล่น
 		async function loadPlayers() {
 
-			const list = document.getElementById("playerList");
-			
-			list.innerHTML = "";
-
 			const date = await getCurrentDate();
 
-			const playersRef = ref(db, `${gang}/${date}/players`);
+			const list		=	document.getElementById("playerList");
 
-			const gangRef = ref(db, `${gang}/information`);
+			const mathnowtoday 	= document.getElementById("mathnow");
 
-			const gangGet = await get(gangRef);
-			let ganginfor = gangGet.val();
+			list.innerHTML	=	"";
 
-			const playersCountRef = await ref(db, `${gang}/${date}/players/`);
-			const playersno = await get(playersCountRef).then((snapshot) => {
+			const gamesCountRef = await ref(db, `${gang}/${date}/games/`);
+			const gamesno = await get(gamesCountRef).then((snapshot) => {
 				return (snapshot.size || 0);
 			});
+
+			mathnowtoday.innerHTML = `${gamesno}`
+
+			const gangRef 			= await ref(db, `${gang}/information`);
+			const playersRef		= await ref(db, `${gang}/${date}/players`);
+			const gamesRef 			= await ref(db, `${gang}/${date}/games`);
+			const gangGet 			= await get(gangRef);
+			const ganginfor 		= gangGet.val();
+
+			const playersno = await get(playersRef).then((snapshot) => {
+				return (snapshot.size || 0);
+			});
+
+			const gamesdata = await get(gamesRef).then((snapshot) => {
+				return (snapshot.size || 0);
+			});
+
+
+				
+					
+			
+
+
+
+
 			const totalplayertoday = document.getElementById("totalplayertoday");
 			totalplayertoday.innerHTML = `&nbsp;( ${(playersno)} )`
 
 
-			await onValue(playersRef, (snapshot) => {
+			await onValue(playersRef, async (snapshot) => {
 				list.innerHTML = ``; 
 				snapshot.forEach( (childSnapshot) => {
+
+
+
 					const playerId = childSnapshot.key;
 					const data = childSnapshot.val();
 					let FeeNow;
+
 					if(data.gamesPlayed == 0)
 					{
 						FeeNow = ganginfor.FeeStart;
@@ -362,36 +465,58 @@
 						FeeNow = ganginfor.FeeStart + (ganginfor.FeeGame * data.gamesPlayed);
 					}
 
+
+
 					const playerlist = document.createElement("li");
 					playerlist.classList.add("list-group-item");
+
+
+					// getgameno(playerId).then((datas) => {
+					// 	console.log(datas);
+					// 	// let ht = `<span class="badge rounded-pill" style="background-color:#87CEFA;">${}</span>`;
+					// });
+
+
 					playerlist.innerHTML = `
 						<div class="row">
-							<div class="col-8" id="playerCanClick${playerId}" >
-								<input type="checkbox" />
-								<i class="fa-regular fa-circle-user"></i> 
+							<div class="col-9" id="playerCanClick${playerId}" >
+								<i class="fa-solid fa-circle-user" style="color:#FF99FF;"></i> 
 								<span style="font-size:20px;">${data.name} </span>
-								<br> 
-								<span style="font-size: 13px;">เกมที่เล่น: <b class="totalgame">${data.gamesPlayed}</b> ค่าบริการ: <b class="feenow">${FeeNow}</b> บาท </span>
+								<br>
+								<span style="font-size: 13px;">เกมที่เล่น: <b class="totalgame">${data.gamesPlayed}</b></span>
+								
 							</div>
-							<div class="col-4 d-flex justify-content-end" id="menuList${playerId}"></div>
+							<div class="col-3 d-flex justify-content-end" id="menuList${playerId}"></div>
 						</div>
 					`;
 					playerlist.setAttribute("data-id", playerId);
 					playerlist.setAttribute("menu-id", playerId);
 					list.appendChild(playerlist);
 
+
+
 					//=================================================
 					
-
 					//=================================================
 
 					const menu = document.getElementById(`menuList${playerId}`);
 
 					menu.innerHTML = "";
 					const menuitem = document.createElement("div");
+					// menuitem.classList.add("d-flex");
+					// menuitem.classList.add("justify-content-end");
 					menuitem.innerHTML = `
-						<!--a href="#" id="edit${playerId}">Edit</a-->
-						<a class="btn btn-outline-primary btn-sm" href="#" id="pay${playerId}"><i class="fa-solid fa-money-bill-1-wave"></i> ชำระเงิน</a>
+						<div class="row d-flex justify-content-end">
+							<a class="btn btn-outline-primary btn-sm" href="#" id="pay${playerId}">
+								<i class="fa-solid fa-money-bill-1-wave"></i> ชำระเงิน
+							</a>
+							<br>
+
+							<div class="d-flex justify-content-end" style="font-size: 13px;">
+
+								ค่าบริการ:&nbsp;<b class="feenow">${FeeNow}</b>&nbsp;บาท
+							</div>
+						</div>
 					`;
 					menuitem.setAttribute("data-id", playerId);
 					menuitem.setAttribute("menu-id", playerId);
@@ -452,31 +577,39 @@
 		}
 
 		$("#search").keyup(function(e) {
-			console.log(this.value)
 			searchplayer(this.value);
 		});
 
 
 
-		// var setint  = '';
-		// $(document).ready(function() {
-		// 	var val = 0;
-		// 	$('#hold').on('mousedown',function (e) {
-		// 		clearInterval(setint);
-		// 		val = 0;
-		// 		setint = setInterval(function () {
-		// 			++val;
-		// 			if(val > 15)
-		// 			{
-		// 				console.log('call event');
-		// 			}
-		// 		},50);
-		// 	});
-		// 	$('#hold').on("mouseleave mouseup", function () {
-		// 		val = 0;
-		// 		clearInterval(setint);
-		// 	});
-		// });
+
+		async function getgameno(playerId){
+			
+			const date = await getCurrentDate();
+			const gamesRef 	= await ref(db, `${gang}/${date}/games`);
+
+			const gameno = [];
+
+			await onValue(gamesRef, async (raw) => {
+				raw.forEach( (datas) => {
+					const data = datas.val();
+
+					if(
+						playerId == data.team1_id1 || 
+						playerId == data.team1_id2 || 
+						playerId == data.team2_id1 || 
+						playerId == data.team2_id2
+						)
+					{
+						gameno[data.gameno]=playerId;
+					}
+				})
+			});
+			return gameno;
+			//console.log(gameno);
+			//return ``;
+			
+		}
 
 
 		async function searchplayer(s) {
@@ -486,12 +619,11 @@
 			
 			list.innerHTML = "";
 
-			const date = await getCurrentDate();
 
 			const playerRef = await ref(db, `${gang}/${date}/players/`);
-			const gangRef = ref(db, `${gang}/information`);
+			const gangGet 	= await get(gangRef);
+			const gangRef 	= await ref(db, `${gang}/information`);
 
-			const gangGet = await get(gangRef);
 			let ganginfor = gangGet.val();
 
 			const q = query(playerRef, orderByChild("name"), startAt(`${s}`), endAt(`${s}\uf8ff`));
@@ -560,11 +692,6 @@
 				console.error("เกิดข้อผิดพลาด:", error);
 			});
 
-
-
-
-
-
 		}
 		
 
@@ -572,8 +699,6 @@
 
 		// เลือกผู้เล่นเพื่อสร้างเกม (2vs2)
 		async function selectPlayer(playerId, playerName) {
-
-
 
 			if (selectedPlayers.length < 4 && !selectedPlayers.some(p => p.id === playerId)) {
 
@@ -584,19 +709,135 @@
 			}
 		}
 
+		async function loadpage(){
+
+			const date = await getCurrentDate();
+
+			const mathnowtoday 	= document.getElementById("mathnow");
+			const mathnow1		= document.getElementById("mathnow1");
+			const mathnow2		= document.getElementById("mathnow2");
+			const mathnow3		= document.getElementById("mathnow3");
+			const mathnow4		= document.getElementById("mathnow4");
+			const mathnow5		= document.getElementById("mathnow5");
+			const mathnow6		= document.getElementById("mathnow6");
+
+			
+			const gamesCountRef = await ref(db, `${gang}/${date}/games/`);
+			const gamesno = await get(gamesCountRef).then((snapshot) => {
+				return (snapshot.size || 0);
+			});
+
+			mathnowtoday.innerHTML = `${gamesno}`
+
+
+			const game1Ref 		= await ref(db, `${gang}/${date}/games/${gamesno}`);
+			const game2Ref 		= await ref(db, `${gang}/${date}/games/${gamesno-1}`);
+			const game3Ref 		= await ref(db, `${gang}/${date}/games/${gamesno-2}`);
+			const game4Ref 		= await ref(db, `${gang}/${date}/games/${gamesno-3}`);
+			const game5Ref 		= await ref(db, `${gang}/${date}/games/${gamesno-4}`);
+			const game6Ref 		= await ref(db, `${gang}/${date}/games/${gamesno-5}`);
+
+			const game1Get 		= await get(game1Ref);
+			const game2Get 		= await get(game2Ref);
+			const game3Get 		= await get(game3Ref);
+			const game4Get 		= await get(game4Ref);
+			const game5Get 		= await get(game5Ref);
+			const game6Get 		= await get(game6Ref);
+
+			const game1infor = game1Get.val();
+			const game2infor = game2Get.val();
+			const game3infor = game3Get.val();
+			const game4infor = game4Get.val();
+			const game5infor = game5Get.val();
+			const game6infor = game6Get.val();
+
+			// console.log(game1infor);
+
+			if(game1infor !== null){
+				mathnow1.innerHTML = `
+					<span class="text-dark" style="font-size:20px;">${game1infor.gameno}</span>
+					<span style="font-size:15px" class="text-primary">${game1infor.team1_player1}</span>
+					<span style="font-size:15px" class="text-primary">${game1infor.team1_player2}</span>
+					 VS 
+					<span style="font-size:15px" class="text-danger">${game1infor.team2_player1}</span> 
+					<span style="font-size:15px" class="text-danger">${game1infor.team2_player2}</span>`
+			}
+
+			if(game2infor !== null){
+				mathnow2.innerHTML = `
+				<span style="font-size:15px" class="text-primary">${game2infor.team1_player1}</span>
+				<span style="font-size:15px" class="text-primary">${game2infor.team1_player2}</span>
+				 VS 
+				<span style="font-size:15px" class="text-danger">${game2infor.team2_player1}</span>
+				<span style="font-size:15px" class="text-danger">${game2infor.team2_player2}</span>
+				<span class="text-dark" style="font-size:20px;">${game2infor.gameno}</span>
+					`
+			}
+
+			if(game3infor !== null){
+				mathnow3.innerHTML = `
+					<span class="text-dark" style="font-size:20px;">${game3infor.gameno}</span>
+					<span style="font-size:15px" class="text-primary">${game3infor.team1_player1}</span>
+					<span style="font-size:15px" class="text-primary">${game3infor.team1_player2}</span>
+					 VS 
+					<span style="font-size:15px" class="text-danger">${game3infor.team2_player1}</span>
+					<span style="font-size:15px" class="text-danger">${game3infor.team2_player2}</span>`
+			}
+
+			if(game4infor !== null){
+				mathnow4.innerHTML = `
+				<span style="font-size:15px" class="text-primary">${game4infor.team1_player1}</span>
+				<span style="font-size:15px" class="text-primary">${game4infor.team1_player2}</span>
+				 VS 
+				<span style="font-size:15px" class="text-danger">${game4infor.team2_player1}</span>
+				<span style="font-size:15px" class="text-danger">${game4infor.team2_player2}</span>
+				<span class="text-dark" style="font-size:20px;">${game4infor.gameno}</span>
+					`
+			}
+
+			if(game5infor !== null){
+				mathnow5.innerHTML = `
+					<span class="text-dark" style="font-size:20px;">${game5infor.gameno}</span>
+					<span style="font-size:15px" class="text-primary">${game5infor.team1_player1}</span>
+					<span style="font-size:15px" class="text-primary">${game5infor.team1_player2}</span>
+					 VS 
+					<span style="font-size:15px" class="text-danger">${game5infor.team2_player1}</span>
+					<span style="font-size:15px" class="text-danger">${game5infor.team2_player2}</span>
+				`
+			}
+
+			if(game6infor !== null){
+				mathnow6.innerHTML = `
+				<span style="font-size:15px" class="text-primary">${game6infor.team1_player1}</span>
+				<span style="font-size:15px" class="text-primary">${game6infor.team1_player2}</span>
+				 VS 
+				<span style="font-size:15px" class="text-danger">${game6infor.team2_player1}</span>
+				<span style="font-size:15px" class="text-danger">${game6infor.team2_player2}</span>
+				<span class="text-dark" style="font-size:20px;">${game6infor.gameno}</span>
+					`
+			}
+
+
+			// const mathnowtodays	= document.getElementById("mathnow");
+			// const gamesCounts 	= await ref(db, `${gang}/${date}/games/`);
+			// const gamesnos		= await get(gamesCounts).then((snapshot) => {
+			// 	return (snapshot.size || 0);
+			// });
+
+			// mathnowtodays.innerHTML = `${gamesnos}`
+
+		}
+
 		// สร้างเกมใหม่ (2vs2)
 		async function createGame() {
 			if (selectedPlayers.length !== 4) return;
 
 			const date = await getCurrentDate();
+
 			const gamesRef = await ref(db, `${gang}/${date}/games/`);
-			//const newGameRef = push(gamesRef);
-
-
 			const gameno = await get(gamesRef).then((snapshot) => {
 				return (snapshot.size || 0) + 1;
 			});
-
 
 			const ccgamesRef = await ref(db, `${gang}/${date}/games/${gameno}`);
 
@@ -606,6 +847,11 @@
 				team1_player2: selectedPlayers[1].name,
 				team2_player1: selectedPlayers[2].name,
 				team2_player2: selectedPlayers[3].name,
+
+				team1_id1: selectedPlayers[0].id,
+				team1_id2: selectedPlayers[1].id,
+				team2_id1: selectedPlayers[2].id,
+				team2_id2: selectedPlayers[3].id,
 				timestamp: new Date().toISOString()
 			});
 
@@ -621,6 +867,11 @@
 				}
 			}
 			selectedPlayers = [];
+
+
+			await loadpage();
+
+
 		}
 
 		// โหลดข้อมูลเกมตามวันที่
@@ -698,6 +949,7 @@
 		window.onload = async () => {
 			await setupGang();
 			await loadPlayers();
+			await loadpage();
 			await loadGames();
 			// await loadReport();
 		};
@@ -705,6 +957,7 @@
 		// ทำให้ฟังก์ชันใช้งานได้ใน HTML
 		window.addPlayer = addPlayer;
 		window.loadPlayers = loadPlayers;
+		window.loadpage = loadpage;
 		window.searchplayer = searchplayer;
 
 	</script>

@@ -1,12 +1,12 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyBIe-ncWVaLrsEZpEXj8Zarr3Jeku6rlZk",
-    authDomain: "teebadnaaaaa.firebaseapp.com",
-    databaseURL: "https://teebadnaaaaa-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "teebadnaaaaa",
-    storageBucket: "teebadnaaaaa.firebasestorage.app",
-    messagingSenderId: "789554357659",
-    appId: "1:789554357659:web:d55f0745f460f213832d3e",
-    measurementId: "G-NY849BJCTM"
+    apiKey: "AIzaSyAYOWpVDOQ7Q-fxjZx0vTS3SDetUbWTMY4",
+    authDomain: "ansentueng.firebaseapp.com",
+    databaseURL: "https://ansentueng-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "ansentueng",
+    storageBucket: "ansentueng.firebasestorage.app",
+    messagingSenderId: "370408378735",
+    appId: "1:370408378735:web:729d1a9e4c951fd844589a",
+    measurementId: "G-75E8KLKM6Z"
   };
 
 // เริ่มต้น Firebase
